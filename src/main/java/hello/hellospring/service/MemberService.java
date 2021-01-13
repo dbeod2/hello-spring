@@ -2,13 +2,16 @@ package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
-import hello.hellospring.repository.MemoryMemberRepository;
 
 import java.util.List;
 
 public class MemberService {
 
-  private final MemberRepository repository = new MemoryMemberRepository();
+  private final MemberRepository repository;
+
+  public MemberService(MemberRepository repository) {
+    this.repository = repository;
+  }
 
   public Long join(Member member) {
     validate(member);
