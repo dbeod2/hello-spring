@@ -39,8 +39,7 @@ public class MemberServiceTest {
   public void nameDuplicateException() {
     Member member1 = Member.of("yura");
     assertThrows(IllegalStateException.class,
-            () -> memberService.join(member1))
-            .getMessage();
+            () -> memberService.join(member1));
   }
 
   @Test
