@@ -24,8 +24,10 @@ class MemoryMemberRepositoryTest {
   @Test
   @DisplayName("회원 정보 저장")
   public void save() {
+    //when
     repository.save(member);
 
+    //then
     Optional<Member> memberResult = repository.findById(member.getId());
     assertThat(member).isEqualTo(memberResult.get());
   }
@@ -33,11 +35,15 @@ class MemoryMemberRepositoryTest {
   @Test
   @DisplayName("회원 이름 검색")
   public void findByName() {
+    //given
     Member member1 = new Member();
     member1.setName("hhhh");
+
+    //when
     repository.save(member);
     repository.save(member1);
 
+    //then
     Optional<Member> memberResult = repository.findByName("hhhh");
     assertThat(member1.getName()).isEqualTo(memberResult.get().getName());
   }
