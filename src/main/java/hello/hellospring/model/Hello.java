@@ -1,4 +1,4 @@
-package model;
+package hello.hellospring.model;
 
 public class Hello {
   private String name;
