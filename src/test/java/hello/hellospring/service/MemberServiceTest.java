@@ -29,7 +29,9 @@ public class MemberServiceTest {
   @DisplayName("회원 가입")
   public void join() {
     Long memberId = memberService.join(member);
-    System.out.println(memberId);
+
+    Member findName = memberService.get(memberId);
+    assertThat(findName.getName()).isEqualTo(member.getName());
   }
 
   @Test
