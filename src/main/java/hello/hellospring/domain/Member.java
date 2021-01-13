@@ -2,15 +2,22 @@ package hello.hellospring.domain;
 
 public class Member {
 
-  private Long id;
+  private Long memberId;
   private String name;
 
-  public Long getId() {
-    return id;
+  private Member(String name) {
+    this.name = name;
   }
 
-  public void setId(Long id) {
-    this.id = id;
+  public static Member of(String name) {
+    return new Member(name);
+  }
+  public Long getMemberId() {
+    return memberId;
+  }
+
+  public void setMemberId(Long memberId) {
+    this.memberId = memberId;
   }
 
   public String getName() {

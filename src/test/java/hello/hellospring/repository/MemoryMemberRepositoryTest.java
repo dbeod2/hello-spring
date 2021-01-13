@@ -12,13 +12,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MemoryMemberRepositoryTest {
 
-  private MemoryMemberRepository repository = new MemoryMemberRepository();
+  MemoryMemberRepository repository = new MemoryMemberRepository();
 
-  Member member = new Member();
+  Member member;
 
   @BeforeEach
   public void setup() {
-    member.setName("hahaha");
+    member = Member.of("hahah");
   }
 
   @Test
@@ -28,19 +28,19 @@ class MemoryMemberRepositoryTest {
     repository.save(member);
 
     //then
-    Optional<Member> memberResult = repository.findById(member.getId());
+    Optional<Member> memberResult = repository.findById(member.getMemberId());
     assertThat(member).isEqualTo(memberResult.get());
   }
 
   @Test
   @DisplayName("회원 이름 검색")
   public void findByName() {
+    repository.save(member);
+
     //given
-    Member member1 = new Member();
-    member1.setName("hhhh");
+    Member member1 = Member.of("hhhh");
 
     //when
-    repository.save(member);
     repository.save(member1);
 
     //then
@@ -51,13 +51,14 @@ class MemoryMemberRepositoryTest {
   @Test
   @DisplayName("회원 전체 검색")
   public void findAll() {
-    Member member1 = new Member();
-    member1.setName("hhhh111111");
-
-    Member member2 = new Member();
-    member2.setName("hello");
     repository.save(member);
+
+    Member member1 = Member.of("hhhh111111");
+    member1.setName("hhhh111111");
     repository.save(member1);
+
+    Member member2 = Member.of("hello");
+    member2.setName("hello");
     repository.save(member2);
 
 
