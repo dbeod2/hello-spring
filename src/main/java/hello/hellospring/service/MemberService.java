@@ -3,6 +3,7 @@ package hello.hellospring.service;
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ public class MemberService {
     this.repository = repository;
   }
 
+  @Transactional
   public Long join(Member member) {
     validate(member);
     repository.save(member);

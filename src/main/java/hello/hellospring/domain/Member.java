@@ -1,8 +1,14 @@
 package hello.hellospring.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Member {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
   private String name;
 
   public Member() {
@@ -15,6 +21,7 @@ public class Member {
   public static Member of(String name) {
     return new Member(name);
   }
+
   public Long getId() {
     return id;
   }
