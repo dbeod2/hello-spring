@@ -2,8 +2,11 @@ package hello.hellospring.domain;
 
 public class Member {
 
-  private Long memberId;
+  private Long id;
   private String name;
+
+  public Member() {
+  }
 
   private Member(String name) {
     this.name = name;
@@ -12,12 +15,12 @@ public class Member {
   public static Member of(String name) {
     return new Member(name);
   }
-  public Long getMemberId() {
-    return memberId;
+  public Long getId() {
+    return id;
   }
 
-  public void setMemberId(Long memberId) {
-    this.memberId = memberId;
+  public void setId(Long id) {
+    this.id = id;
   }
 
   public String getName() {

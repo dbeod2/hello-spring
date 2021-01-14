@@ -18,7 +18,7 @@ public class MemberService {
   public Long join(Member member) {
     validate(member);
     repository.save(member);
-    return member.getMemberId();
+    return member.getId();
   }
 
   public Member get(Long id) {
