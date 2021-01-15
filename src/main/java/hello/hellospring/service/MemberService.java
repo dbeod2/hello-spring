@@ -18,9 +18,17 @@ public class MemberService {
 
   @Transactional
   public Long join(Member member) {
-    validate(member);
-    repository.save(member);
-    return member.getId();
+    Long start = System.currentTimeMillis();
+    try {
+      validate(member);
+      repository.save(member);
+      return member.getId();
+    } finally {
+      Long finish = System.currentTimeMillis();
+      Long timeMs = finish - start;
+      System.out.println("join : " + timeMs + "ms");
+
+    }
   }
 
   public Member get(Long id) {
